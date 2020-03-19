@@ -16,6 +16,7 @@ public class CharacterController : MonoBehaviour
 
     private Animator mAnimator;
     private Rigidbody mRigidbody;
+    private Transform mTransform;
     private bool onAir;
 
     void Awake()
@@ -25,6 +26,7 @@ public class CharacterController : MonoBehaviour
         this.onAir = true;
         this.mAnimator = this.gameObject.GetComponent<Animator>();
         this.mRigidbody = this.gameObject.GetComponent<Rigidbody>();
+        this.mTransform = this.gameObject.GetComponent<Transform>();
     }
 
     // Start is called before the first frame update
@@ -42,34 +44,54 @@ public class CharacterController : MonoBehaviour
 
     private void moveControll()
     {
-        // 
-        if (!this.onAir && Input.GetKey(KeyCode.W))
+
+
+        if (Input.GetKey(KeyCode.W))
             this.mSpeed += Time.deltaTime;
         else
             this.mSpeed -= Time.deltaTime;
 
-        if (!this.onAir && Input.GetKeyDown(KeyCode.Space))
+        if (!this.onAir)
         {
-            this.mRigidbody.AddForce(Vector3.up * this.jumpPower);
-            this.mAnimator.SetTrigger("Jump");
+            if (Input.GetKeyDown(KeyCode.Space))
+                this.mRigidbody.AddForce(Vector3.up * this.jumpPower);
         }
+        if (Input.GetKey(KeyCode.A))
+            this.transform.Rotate(0.0f, -1.0f, 0.0f, Space.Self);
+        if (Input.GetKey(KeyCode.D))
+            this.transform.Rotate(0.0f, 1.0f, 0.0f, Space.Self);
+        if (Input.GetKeyDown(KeyCode.S))
+            this.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+
         this.mSpeed = Mathf.Clamp(this.mSpeed, this.MIN_SPEED, this.MAX_SPEED);
+
+        this.mTransform.Translate(Vector3.forward * this.mSpeed, Space.Self);
     }
 
     private void animationControll()
     {
         this.mAnimator.SetFloat("Speed", this.mSpeed);
 
-        if (!this.onAir && Input.GetKey(KeyCode.LeftControl))
-            this.mAnimator.SetBool("Crouch", true);
-        else
-            this.mAnimator.SetBool("Crouch", false);
+        if (!this.onAir)
+        {
+            if (Input.GetKey(KeyCode.LeftControl))
+                this.mAnimator.SetBool("Crouch", true);
+            else
+                this.mAnimator.SetBool("Crouch", false);
+            if (Input.GetKey(KeyCode.LeftShift))
+                this.MAX_SPEED = 1.0f;
+            else
+                this.MAX_SPEED = 0.5f;
+            if (Input.GetKeyDown(KeyCode.Space))
+                this.mAnimator.SetTrigger("Jump");
+        }
 
-        if (!this.onAir && Input.GetKey(KeyCode.LeftShift))
-            this.MAX_SPEED = 1.0f;
-        else
-            this.MAX_SPEED = 0.5f;
-
+        //if (Input.GetKey(KeyCode.A))
+        //    this.mAnimator.SetTrigger("Turn Left");
+        //if (Input.GetKey(KeyCode.D))
+        //    this.mAnimator.SetTrigger("Turn Right");
+        //if (Input.GetKey(KeyCode.S))
+        //    this.mAnimator.SetTrigger("Turn Back");
     }
 
     private void OnCollisionEnter(Collision collision)
