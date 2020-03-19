@@ -12,18 +12,24 @@ public class CharacterController : MonoBehaviour
     public float mSpeed;
     [Header("跳躍力")]
     public float jumpPower;
+    [Header("第一人稱相機")]
+    public Camera firstCamera;
+    [Header("第三人稱相機")]
+    public Camera thirdCamera;
 
 
     private Animator mAnimator;
     private Rigidbody mRigidbody;
     private Transform mTransform;
     private bool onAir;
+    private bool isFirstCamera;
 
     void Awake()
     {
         // initial value
         this.mSpeed = 0.0f;
         this.onAir = true;
+        this.isFirstCamera = false;
         this.mAnimator = this.gameObject.GetComponent<Animator>();
         this.mRigidbody = this.gameObject.GetComponent<Rigidbody>();
         this.mTransform = this.gameObject.GetComponent<Transform>();
@@ -38,6 +44,19 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            this.isFirstCamera = true;
+            this.firstCamera.enabled = true;
+            this.thirdCamera.enabled = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.F3))
+        {
+            this.isFirstCamera = false;
+            this.firstCamera.enabled = false;
+            this.thirdCamera.enabled = true;
+        }
+
         this.moveControll();
         this.animationControll();
     }
@@ -47,7 +66,13 @@ public class CharacterController : MonoBehaviour
 
 
         if (Input.GetKey(KeyCode.W))
+        {
             this.mSpeed += Time.deltaTime;
+            if (this.isFirstCamera)
+                this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.firstCamera.transform.eulerAngles.y, 0.0f));
+            else
+                this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.thirdCamera.transform.eulerAngles.y, 0.0f));
+        }
         else
             this.mSpeed -= Time.deltaTime;
 
@@ -57,11 +82,23 @@ public class CharacterController : MonoBehaviour
                 this.mRigidbody.AddForce(Vector3.up * this.jumpPower);
         }
         if (Input.GetKey(KeyCode.A))
+        {
             this.transform.Rotate(0.0f, -1.0f, 0.0f, Space.Self);
+            this.firstCamera.transform.RotateAround(
+                this.transform.position, Vector3.up, -1.0f);
+        }
         if (Input.GetKey(KeyCode.D))
+        {
             this.transform.Rotate(0.0f, 1.0f, 0.0f, Space.Self);
+            this.firstCamera.transform.RotateAround(
+                this.transform.position, Vector3.up, 1.0f);
+        }
         if (Input.GetKeyDown(KeyCode.S))
+        {
             this.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
+            this.firstCamera.transform.RotateAround(
+                this.transform.position, Vector3.up, -180.0f);
+        }
 
         this.mSpeed = Mathf.Clamp(this.mSpeed, this.MIN_SPEED, this.MAX_SPEED);
 
@@ -75,9 +112,15 @@ public class CharacterController : MonoBehaviour
         if (!this.onAir)
         {
             if (Input.GetKey(KeyCode.LeftControl))
+            {
                 this.mAnimator.SetBool("Crouch", true);
+                this.firstCamera.transform.Translate(-Vector3.up * 5, Space.Self);
+            }
             else
+            {
+                this.firstCamera.transform.Translate(Vector3.up * 5, Space.Self);
                 this.mAnimator.SetBool("Crouch", false);
+            }
             if (Input.GetKey(KeyCode.LeftShift))
                 this.MAX_SPEED = 1.0f;
             else
@@ -86,12 +129,18 @@ public class CharacterController : MonoBehaviour
                 this.mAnimator.SetTrigger("Jump");
         }
 
-        //if (Input.GetKey(KeyCode.A))
-        //    this.mAnimator.SetTrigger("Turn Left");
-        //if (Input.GetKey(KeyCode.D))
-        //    this.mAnimator.SetTrigger("Turn Right");
-        //if (Input.GetKey(KeyCode.S))
-        //    this.mAnimator.SetTrigger("Turn Back");
+        if (this.mSpeed == 0.0f && Input.GetKey(KeyCode.A))
+            this.mAnimator.SetBool("Turn Left", true);
+        else
+            this.mAnimator.SetBool("Turn Left", false);
+        if (this.mSpeed == 0.0f && Input.GetKey(KeyCode.D))
+            this.mAnimator.SetBool("Turn Right", true);
+        else
+            this.mAnimator.SetBool("Turn Right", false);
+        //if (this.mSpeed == 0.0f && Input.GetKey(KeyCode.S))
+        //    this.mAnimator.SetBool("Turn Back", true);
+        //else
+        //    this.mAnimator.SetBool("Turn Back", false);
     }
 
     private void OnCollisionEnter(Collision collision)
