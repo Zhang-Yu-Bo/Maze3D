@@ -15,7 +15,8 @@ public class CharacterController : MonoBehaviour
 
 
     private Animator mAnimator;
-    public bool onAir;
+    private Rigidbody mRigidbody;
+    private bool onAir;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class CharacterController : MonoBehaviour
         this.mSpeed = 0.0f;
         this.onAir = true;
         this.mAnimator = this.gameObject.GetComponent<Animator>();
+        this.mRigidbody = this.gameObject.GetComponent<Rigidbody>();
     }
 
     // Start is called before the first frame update
@@ -41,18 +43,14 @@ public class CharacterController : MonoBehaviour
     private void moveControll()
     {
         // 
-        if (Input.GetKey(KeyCode.W))
-        {
+        if (!this.onAir && Input.GetKey(KeyCode.W))
             this.mSpeed += Time.deltaTime;
-        }
         else
-        {
             this.mSpeed -= Time.deltaTime;
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !this.onAir)
+        if (!this.onAir && Input.GetKeyDown(KeyCode.Space))
         {
-            this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * this.jumpPower);
+            this.mRigidbody.AddForce(Vector3.up * this.jumpPower);
             this.mAnimator.SetTrigger("Jump");
         }
         this.mSpeed = Mathf.Clamp(this.mSpeed, this.MIN_SPEED, this.MAX_SPEED);
@@ -61,14 +59,16 @@ public class CharacterController : MonoBehaviour
     private void animationControll()
     {
         this.mAnimator.SetFloat("Speed", this.mSpeed);
-        if (Input.GetKey(KeyCode.LeftControl))
+
+        if (!this.onAir && Input.GetKey(KeyCode.LeftControl))
             this.mAnimator.SetBool("Crouch", true);
         else
             this.mAnimator.SetBool("Crouch", false);
-        if (Input.GetKey(KeyCode.LeftShift))
-            this.mAnimator.SetBool("Run", true);
+
+        if (!this.onAir && Input.GetKey(KeyCode.LeftShift))
+            this.MAX_SPEED = 1.0f;
         else
-            this.mAnimator.SetBool("Run", false);
+            this.MAX_SPEED = 0.5f;
 
     }
 
