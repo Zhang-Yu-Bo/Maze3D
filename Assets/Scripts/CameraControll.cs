@@ -45,9 +45,9 @@ public class CameraControll : MonoBehaviour
             this.showMap = false;
 
         if (this.showMap)
-            this.gameObject.GetComponent<Camera>().cullingMask = 4919;
+            this.gameObject.GetComponent<Camera>().cullingMask = 0b0001_0011_0011_0111;
         else
-            this.gameObject.GetComponent<Camera>().cullingMask = 823;
+            this.gameObject.GetComponent<Camera>().cullingMask = 0b0000_0011_0011_0111;
     }
 
     private void changeView()
