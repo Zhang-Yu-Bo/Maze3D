@@ -63,8 +63,7 @@ public class CharacterController : MonoBehaviour
 
     private void moveControll()
     {
-
-
+        //float leftOrRightMove = 0.0f;
         if (Input.GetKey(KeyCode.W))
         {
             this.mSpeed += Time.deltaTime;
@@ -83,26 +82,44 @@ public class CharacterController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            this.transform.Rotate(0.0f, -1.0f, 0.0f, Space.Self);
-            this.firstCamera.transform.RotateAround(
-                this.transform.position, Vector3.up, -1.0f);
+            //if (Input.GetKey(KeyCode.W))
+            //{
+            //    leftOrRightMove = -1;
+            //}
+            //else
+            //{
+                this.transform.Rotate(0.0f, -1.0f, 0.0f, Space.Self);
+                this.firstCamera.transform.RotateAround(
+                    this.transform.position, Vector3.up, -1.0f);
+                this.thirdCamera.transform.RotateAround(
+                    this.transform.position, Vector3.up, -1.0f);
+            //}
         }
         if (Input.GetKey(KeyCode.D))
         {
-            this.transform.Rotate(0.0f, 1.0f, 0.0f, Space.Self);
-            this.firstCamera.transform.RotateAround(
-                this.transform.position, Vector3.up, 1.0f);
+            //if (Input.GetKey(KeyCode.W))
+            //{
+            //    leftOrRightMove = 1;
+            //}
+            //else
+            //{
+                this.transform.Rotate(0.0f, 1.0f, 0.0f, Space.Self);
+                this.firstCamera.transform.RotateAround(
+                    this.transform.position, Vector3.up, 1.0f);
+                this.thirdCamera.transform.RotateAround(
+                    this.transform.position, Vector3.up, 1.0f);
+            //}
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            this.transform.Rotate(0.0f, -180.0f, 0.0f, Space.Self);
-            this.firstCamera.transform.RotateAround(
-                this.transform.position, Vector3.up, -180.0f);
+            this.mSpeed = 0.0f;
         }
 
         this.mSpeed = Mathf.Clamp(this.mSpeed, this.MIN_SPEED, this.MAX_SPEED);
 
+        //this.mTransform.Translate(new Vector3(leftOrRightMove, 0.0f, 1.0f) * this.mSpeed, Space.Self);
         this.mTransform.Translate(Vector3.forward * this.mSpeed, Space.Self);
+
     }
 
     private void animationControll()
@@ -129,14 +146,14 @@ public class CharacterController : MonoBehaviour
                 this.mAnimator.SetTrigger("Jump");
         }
 
-        if (this.mSpeed == 0.0f && Input.GetKey(KeyCode.A))
-            this.mAnimator.SetBool("Turn Left", true);
-        else
-            this.mAnimator.SetBool("Turn Left", false);
-        if (this.mSpeed == 0.0f && Input.GetKey(KeyCode.D))
-            this.mAnimator.SetBool("Turn Right", true);
-        else
-            this.mAnimator.SetBool("Turn Right", false);
+        //if (this.mSpeed == 0.0f && Input.GetKey(KeyCode.A))
+        //    this.mAnimator.SetBool("Turn Left", true);
+        //else
+        //    this.mAnimator.SetBool("Turn Left", false);
+        //if (this.mSpeed == 0.0f && Input.GetKey(KeyCode.D))
+        //    this.mAnimator.SetBool("Turn Right", true);
+        //else
+        //    this.mAnimator.SetBool("Turn Right", false);
         //if (this.mSpeed == 0.0f && Input.GetKey(KeyCode.S))
         //    this.mAnimator.SetBool("Turn Back", true);
         //else
