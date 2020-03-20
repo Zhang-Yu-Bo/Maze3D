@@ -10399,7 +10399,7 @@ GameObject:
   - component: {fileID: 1244238576}
   - component: {fileID: 1244238579}
   - component: {fileID: 1244238578}
-  m_Layer: 13
+  m_Layer: 14
   m_Name: Map Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16301,6 +16301,10 @@ PrefabInstance:
     - target: {fileID: 1230521255, guid: 1cacd69aedad48b449d57f6b3cbf024b, type: 3}
       propertyPath: m_Constraints
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1304898509, guid: 1cacd69aedad48b449d57f6b3cbf024b, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1304898510, guid: 1cacd69aedad48b449d57f6b3cbf024b, type: 3}
       propertyPath: m_LocalScale.x
