@@ -72,6 +72,14 @@ public class CharacterController : MonoBehaviour
             else
                 this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.thirdCamera.transform.eulerAngles.y, 0.0f));
         }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            this.mSpeed += Time.deltaTime;
+            if (this.isFirstCamera)
+                this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.firstCamera.transform.eulerAngles.y + 180.0f, 0.0f));
+            else
+                this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.thirdCamera.transform.eulerAngles.y + 180.0f, 0.0f));
+        }
         else
             this.mSpeed -= Time.deltaTime;
 
@@ -82,37 +90,40 @@ public class CharacterController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
-            //if (Input.GetKey(KeyCode.W))
-            //{
-            //    leftOrRightMove = -1;
-            //}
-            //else
-            //{
+            if (Input.GetKey(KeyCode.W))
+            {
+                if (this.isFirstCamera)
+                    this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.firstCamera.transform.eulerAngles.y - 90.0f, 0.0f));
+                else
+                    this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.thirdCamera.transform.eulerAngles.y - 90.0f, 0.0f));
+            }
+            else
+            {
                 this.transform.Rotate(0.0f, -1.0f, 0.0f, Space.Self);
                 this.firstCamera.transform.RotateAround(
                     this.transform.position, Vector3.up, -1.0f);
                 this.thirdCamera.transform.RotateAround(
                     this.transform.position, Vector3.up, -1.0f);
-            //}
+            }
+
         }
         if (Input.GetKey(KeyCode.D))
         {
-            //if (Input.GetKey(KeyCode.W))
-            //{
-            //    leftOrRightMove = 1;
-            //}
-            //else
-            //{
+            if (Input.GetKey(KeyCode.W))
+            {
+                if (this.isFirstCamera)
+                    this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.firstCamera.transform.eulerAngles.y + 90.0f, 0.0f));
+                else
+                    this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.thirdCamera.transform.eulerAngles.y + 90.0f, 0.0f));
+            }
+            else
+            {
                 this.transform.Rotate(0.0f, 1.0f, 0.0f, Space.Self);
                 this.firstCamera.transform.RotateAround(
                     this.transform.position, Vector3.up, 1.0f);
                 this.thirdCamera.transform.RotateAround(
                     this.transform.position, Vector3.up, 1.0f);
-            //}
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            this.mSpeed = 0.0f;
+            }
         }
 
         this.mSpeed = Mathf.Clamp(this.mSpeed, this.MIN_SPEED, this.MAX_SPEED);
