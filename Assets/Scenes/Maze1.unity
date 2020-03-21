@@ -11704,6 +11704,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 930609573}
+  - component: {fileID: 930609576}
+  - component: {fileID: 930609575}
+  - component: {fileID: 930609574}
+  - component: {fileID: 930609578}
+  - component: {fileID: 930609577}
   m_Layer: 8
   m_Name: EnterGate
   m_TagString: Wall
@@ -11732,6 +11737,71 @@ Transform:
   m_Father: {fileID: 742973317}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &930609574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930609572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.980271, y: 20.166979, z: 14.697268}
+  m_Center: {x: -12.67654, y: 8.948064, z: 0.2789409}
+--- !u!65 &930609575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930609572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.928315, y: 20.36539, z: 4.086749}
+  m_Center: {x: -12.068061, y: 8.989504, z: 12.512158}
+--- !u!65 &930609576
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930609572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.091671, y: 20.450077, z: 5.0683446}
+  m_Center: {x: -12.10542, y: 8.992527, z: -11.909534}
+--- !u!65 &930609577
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930609572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.58372, y: 18.849743, z: 2.2708468}
+  m_Center: {x: -13.364146, y: 8.231678, z: -8.144974}
+--- !u!65 &930609578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930609572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.491056, y: 18.734127, z: 2.790744}
+  m_Center: {x: -13.317899, y: 8.34717, z: 9.098131}
 --- !u!1 &933691359
 GameObject:
   m_ObjectHideFlags: 0
@@ -20396,6 +20466,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1757676553}
+  - component: {fileID: 1757676560}
+  - component: {fileID: 1757676559}
+  - component: {fileID: 1757676558}
+  - component: {fileID: 1757676557}
+  - component: {fileID: 1757676556}
+  - component: {fileID: 1757676555}
+  - component: {fileID: 1757676554}
   m_Layer: 8
   m_Name: ExitGate
   m_TagString: Wall
@@ -20420,6 +20497,97 @@ Transform:
   m_Father: {fileID: 831540539}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1757676554
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757676552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.5321665, y: 12.163192, z: 7.1341653}
+  m_Center: {x: -1.0590779, y: 13.181774, z: 0.12027822}
+--- !u!65 &1757676555
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757676552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.061684, y: 20.244446, z: 4.403577}
+  m_Center: {x: -0.7943549, y: 9.622223, z: -5.3803144}
+--- !u!65 &1757676556
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757676552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.960808, y: 20.315403, z: 4.995444}
+  m_Center: {x: -0.86870176, y: 9.6577015, z: 5.4494085}
+--- !u!65 &1757676557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757676552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.782591, y: 19.01327, z: 2.6038647}
+  m_Center: {x: -1.3998996, y: 9.006635, z: 8.831966}
+--- !u!65 &1757676558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757676552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.414037, y: 21.014133, z: 4.9610543}
+  m_Center: {x: -0.53681505, y: 10.007067, z: 12.034355}
+--- !u!65 &1757676559
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757676552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.718527, y: 18.902061, z: 3.2327228}
+  m_Center: {x: -1.4380946, y: 8.942503, z: -8.626735}
+--- !u!65 &1757676560
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757676552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 11.470261, y: 21, z: 5.324646}
+  m_Center: {x: -0.6332119, y: 9.9782915, z: -12.1392355}
 --- !u!1 &1771322616
 GameObject:
   m_ObjectHideFlags: 0
@@ -24224,6 +24392,11 @@ PrefabInstance:
       propertyPath: thirdCamera
       value: 
       objectReference: {fileID: 255476666}
+    - target: {fileID: 5809407097453468261, guid: ffdd9e7ed1b22814db2ec75fa3473276,
+        type: 3}
+      propertyPath: jumpPower
+      value: 450
+      objectReference: {fileID: 0}
     - target: {fileID: 5809407097453468264, guid: ffdd9e7ed1b22814db2ec75fa3473276,
         type: 3}
       propertyPath: m_LocalPosition.x
