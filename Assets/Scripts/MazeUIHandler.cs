@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MazeUIHandler : MonoBehaviour
 {
     public Text timeText;
     public GameObject mainCharacter;
     public AudioClip bell;
+    public GameObject endCanvas;
 
     private float Mins;
     private float Secs;
@@ -22,8 +24,8 @@ public class MazeUIHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.Mins = 5;
-        this.Secs = 0;
+        this.Mins = 0;
+        this.Secs = 5;
         this.mSecs = 0;
     }
 
@@ -60,7 +62,13 @@ public class MazeUIHandler : MonoBehaviour
         }
         else
         {
-            Debug.Log("End");
+            FindObjectOfType<CharacterControll>().gameOver();
+            this.endCanvas.SetActive(true);
         }
+    }
+
+    public void backToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

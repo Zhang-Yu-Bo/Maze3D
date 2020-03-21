@@ -23,6 +23,7 @@ public class CharacterControll : MonoBehaviour
     private Transform mTransform;
     private bool onAir;
     private bool isFirstCamera;
+    private bool isLive = false;
 
     void Awake()
     {
@@ -33,6 +34,7 @@ public class CharacterControll : MonoBehaviour
         this.mAnimator = this.gameObject.GetComponent<Animator>();
         this.mRigidbody = this.gameObject.GetComponent<Rigidbody>();
         this.mTransform = this.gameObject.GetComponent<Transform>();
+        this.isLive = true;
     }
 
     // Start is called before the first frame update
@@ -44,21 +46,24 @@ public class CharacterControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (this.isLive)
         {
-            this.isFirstCamera = true;
-            this.firstCamera.enabled = true;
-            this.thirdCamera.enabled = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.F3))
-        {
-            this.isFirstCamera = false;
-            this.firstCamera.enabled = false;
-            this.thirdCamera.enabled = true;
-        }
 
-        this.moveControll();
-        this.animationControll();
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                this.isFirstCamera = true;
+                this.firstCamera.enabled = true;
+                this.thirdCamera.enabled = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.F3))
+            {
+                this.isFirstCamera = false;
+                this.firstCamera.enabled = false;
+                this.thirdCamera.enabled = true;
+            }
+            this.moveControll();
+            this.animationControll();
+        }
     }
 
     private void moveControll()
@@ -136,5 +141,10 @@ public class CharacterControll : MonoBehaviour
     {
         if (collision.gameObject.tag == "Floor")
             this.onAir = true;
+    }
+
+    public void gameOver()
+    {
+        this.isLive = false;
     }
 }
