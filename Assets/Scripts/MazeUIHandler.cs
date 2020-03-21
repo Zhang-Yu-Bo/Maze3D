@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class MazeUIHandler : MonoBehaviour
 {
     public Text timeText;
+    public GameObject mainCharacter;
+    public AudioClip bell;
 
     private float Mins;
     private float Secs;
@@ -33,24 +35,30 @@ public class MazeUIHandler : MonoBehaviour
 
     private void updateTime()
     {
-        float deltaTime = Mathf.Floor(Time.deltaTime * 100);
-        this.mSecs -= deltaTime;
-        if (this.mSecs < 0)
+        if (!this.isEnd)
         {
-            this.Secs--;
-            this.mSecs += 100;
+            float deltaTime = Mathf.Floor(Time.deltaTime * 100);
+            this.mSecs -= deltaTime;
+            if (this.mSecs < 0)
+            {
+                this.Secs--;
+                this.mSecs += 100;
+                if (this.Secs % 10 == 0)
+                    this.mainCharacter.GetComponent<AudioSource>().PlayOneShot(this.bell);
+            }
+            if (this.Secs < 0)
+            {
+                this.Mins--;
+                this.Secs += 60;
+            }
+            if (this.Mins >= 0)
+                timeText.text = "Time: " + this.Mins.ToString("00") + ":" + this.Secs.ToString("00") + ":" + this.mSecs.ToString("00");
+            else
+                this.isEnd = true;
         }
-        if (this.Secs < 0)
-        {
-            this.Mins--;
-            this.Secs += 60;
-        }
-        if (this.Mins >= 0)
-            timeText.text = "Time: " + this.Mins.ToString("00") + ":" + this.Secs.ToString("00") + ":" + this.mSecs.ToString("00");
-        else if (!this.isEnd)
+        else
         {
             Debug.Log("End");
-            this.isEnd = true;
         }
     }
 }
