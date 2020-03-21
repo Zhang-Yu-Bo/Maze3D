@@ -92,6 +92,7 @@ public class CameraControll : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+
         // 滾輪調整相機遠近
         distence -= Input.GetAxis("Mouse ScrollWheel") * this.distenceSensitivity * Time.deltaTime;
         distence = Mathf.Clamp(distence, this.cameraMinDistence, this.cameraMaxDistence);
@@ -99,6 +100,5 @@ public class CameraControll : MonoBehaviour
             * new Vector3(0, distence * 0.141f, -distence * 1.0f)
             + this.charactor.transform.position + Vector3.up * 7;
         this.gameObject.transform.position = cameraPosition;
-
     }
 }

@@ -48,7 +48,7 @@ public class FirstCameraControll : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftAlt))
             this.isLock = !this.isLock;
 
-        // 第三人稱視角
+        // 第一人稱視角
         if (this.isLock || Input.GetMouseButton(1))
         {
             // 隱藏游標
@@ -86,7 +86,7 @@ public class FirstCameraControll : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
 
-        // 滾輪調整相機遠近
+        // 跟人物跑
         Vector3 cameraPosition = this.gameObject.transform.rotation
             * new Vector3(0.0f, 0.0f, 2.2f)
             + this.charactor.transform.position + Vector3.up * 9;
