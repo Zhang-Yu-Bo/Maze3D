@@ -5,16 +5,19 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    private bool isTrigger = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public void TriggerDialogue()
     {
-        
+        FindObjectOfType<DialogueManager>().StartDialogue(this.dialogue);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (!this.isTrigger)
+        {
+            this.TriggerDialogue();
+            this.isTrigger = true;
+        }
     }
 }

@@ -7294,7 +7294,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624480914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 373.95135, y: 256.12, z: -119.125}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7312,6 +7312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b7dba512f82d8c478543be862f7e5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameText: {fileID: 546410972}
+  dialogueText: {fileID: 457706411}
+  dialogueBox: {fileID: 465593543}
 --- !u!1 &639656250
 GameObject:
   m_ObjectHideFlags: 0
@@ -13790,7 +13793,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1052906628}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 624480917}
+        m_MethodName: DisplayNextSentence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1052906628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16273,6 +16287,69 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1230389666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1230389669}
+  - component: {fileID: 1230389668}
+  - component: {fileID: 1230389667}
+  m_Layer: 0
+  m_Name: First Dialogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1230389667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230389666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495028ac5e8b584408aca769bd1a925f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Unknow
+    sentences:
+    - Who am i? Where is it?
+    - A maze? This is not a good condition...
+    - I need to find the exit...
+--- !u!65 &1230389668
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230389666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.3518524, y: 2.5977745, z: 3.9559326}
+  m_Center: {x: 0.04698944, y: -2.7017708, z: -0.031311035}
+--- !u!4 &1230389669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230389666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -135, y: 5, z: 140}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1230521252 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5809407097453468260, guid: ffdd9e7ed1b22814db2ec75fa3473276,
@@ -17584,7 +17661,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444839380}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -69.3, y: -28.8, z: 65.63}
+  m_LocalPosition: {x: -69.3, y: -28.8, z: 65.6}
   m_LocalScale: {x: 20, y: 40, z: 10}
   m_Children: []
   m_Father: {fileID: 948764539}

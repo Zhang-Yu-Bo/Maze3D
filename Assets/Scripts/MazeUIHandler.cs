@@ -54,7 +54,9 @@ public class MazeUIHandler : MonoBehaviour
             if (this.Mins >= 0)
                 timeText.text = "Time: " + this.Mins.ToString("00") + ":" + this.Secs.ToString("00") + ":" + this.mSecs.ToString("00");
             else
+            {
                 this.isEnd = true;
+            }
         }
         else
         {
