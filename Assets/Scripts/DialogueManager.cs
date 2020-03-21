@@ -9,12 +9,13 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public GameObject dialogueBox;
 
-    private Queue<string> sentences;
+    private Queue<string> sentences = new Queue<string>();
 
     // Start is called before the first frame update
     void Start()
     {
-        sentences = new Queue<string>();
+        if (this.sentences == null)
+            this.sentences = new Queue<string>();
     }
 
     public void StartDialogue(Dialogue dialogue)

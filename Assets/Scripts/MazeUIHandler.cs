@@ -24,8 +24,8 @@ public class MazeUIHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.Mins = 0;
-        this.Secs = 5;
+        this.Mins = 5;
+        this.Secs = 0;
         this.mSecs = 0;
     }
 
@@ -69,6 +69,7 @@ public class MazeUIHandler : MonoBehaviour
 
     public void backToMenu()
     {
+        this.isEnd = true;
         SceneManager.LoadScene("Menu");
     }
 }
