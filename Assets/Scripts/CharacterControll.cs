@@ -85,6 +85,12 @@ public class CharacterControll : MonoBehaviour
                     angleFixedValue -= 90.0f;
                 else
                     angleFixedValue += 90.0f;
+
+            // 人物轉向控制，根據當前攝影機
+            if (this.isFirstCamera)
+                this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.firstCamera.transform.eulerAngles.y + angleFixedValue, 0.0f));
+            else
+                this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.thirdCamera.transform.eulerAngles.y + angleFixedValue, 0.0f));
         }
         else
             this.mSpeed -= Time.deltaTime;
@@ -92,12 +98,6 @@ public class CharacterControll : MonoBehaviour
         if (!this.onAir)
             if (Input.GetKeyDown(KeyCode.Space))
                 this.mRigidbody.AddForce(Vector3.up * this.jumpPower);
-
-        // 人物轉向控制，根據當前攝影機
-        if (this.isFirstCamera)
-            this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.firstCamera.transform.eulerAngles.y + angleFixedValue, 0.0f));
-        else
-            this.mTransform.rotation = Quaternion.Euler(new Vector3(0.0f, this.thirdCamera.transform.eulerAngles.y + angleFixedValue, 0.0f));
 
         this.mSpeed = Mathf.Clamp(this.mSpeed, this.MIN_SPEED, this.MAX_SPEED);
         this.mTransform.Translate(Vector3.forward * this.mSpeed, Space.Self);
